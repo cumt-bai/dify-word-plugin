@@ -1,0 +1,53 @@
+version: 0.0.1
+author: "ai_assistant"
+name: "word_template_filler"
+label:
+  zh_Hans: "Word 模板精准填充器"
+  en_US: "Word Template Filler"
+description:
+  zh_Hans: "基于 docxtpl 库，通过 JSON 数据精准替换 Word 模板中的 {{占位符}}，支持网络图片自动缩放插入。"
+  en_US: "Fill Word templates precisionally using JSON data based on docxtpl, supporting auto-scaled image insertion."
+
+tool:
+  label:
+    zh_Hans: "Word 模板精准填充器"
+    en_US: "Word Template Filler"
+  description:
+    zh_Hans: "通过 JSON 数据精准替换 Word 模板中的 {{占位符}}，支持图片自动缩放插入。"
+    en_US: "Fill Word templates precisionally using JSON data, supporting auto-scaled image insertion."
+  
+  inputs:
+    - name: template_file
+      type: file
+      label:
+        zh_Hans: "Word 官方模板文件 (.docx)"
+        en_US: "Word Template File (.docx)"
+      required: true
+      description:
+        zh_Hans: "请上传带有 {{变量名}} 占位符的官方 Word 模板文件"
+        en_US: "Please upload the official Word template file containing {{variable}} placeholders"
+      
+    - name: fill_data
+      type: string
+      label:
+        zh_Hans: "填充数据 (JSON 字符串)"
+        en_US: "Fill Data (JSON String)"
+      required: true
+      description:
+        zh_Hans: "请输入 JSON 键值对"
+        en_US: "Please input JSON key-value pairs"
+
+    - name: default_image_width
+      type: number
+      label:
+        zh_Hans: "图片默认插入宽度 (厘米)"
+        en_US: "Default Image Width (cm)"
+      required: false
+      default: 12
+
+  outputs:
+    - name: result_file
+      type: file
+      label:
+        zh_Hans: "生成的 Word 成品文件"
+        en_US: "Generated Word File"
